@@ -1,0 +1,4 @@
+displayName = Keystrokes
+author = MrQuba
+version = 1.1
+languageVersion = 6
