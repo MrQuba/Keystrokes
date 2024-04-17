@@ -18,10 +18,19 @@ namespace Keystrokes.Content
 		static int pbCr = 60, pbCg = 83, pbCb = 143, pbCa = 180;
 		public static Color pressedBackgroundColor = new(pbCr, pbCg, pbCb, pbCa);
 		public static int posX = 850;
-		public static int posY = 250;
-		static string ConfigPath = Path.Combine(Main.SavePath, "ModConfigs", "KeyStrokes.json");
+		public static int posY = -120;
+		static string ConfigPath = Path.Combine(Main.SavePath, "ModConfigs", "Keystrokes.json");
 		static Preferences Configuration = new Preferences(ConfigPath);
-
+		public static Microsoft.Xna.Framework.Input.Keys up = Microsoft.Xna.Framework.Input.Keys.W;
+		static int i_up = (int)up;
+		public static Microsoft.Xna.Framework.Input.Keys down = Microsoft.Xna.Framework.Input.Keys.S;
+		static int i_down = (int)down;
+		public static Microsoft.Xna.Framework.Input.Keys left = Microsoft.Xna.Framework.Input.Keys.A;
+		static int i_left = (int)left;
+		public static Microsoft.Xna.Framework.Input.Keys right = Microsoft.Xna.Framework.Input.Keys.D;
+		static int i_right = (int)right;
+		public static Microsoft.Xna.Framework.Input.Keys jump = Microsoft.Xna.Framework.Input.Keys.Space;
+		static int i_jump = (int)jump;
 		public static void Load()
 		{
 			bool success = ReadConfig();
@@ -58,6 +67,17 @@ namespace Keystrokes.Content
 				// Position
 				Configuration.Get("PositionX", ref posX);
 				Configuration.Get("PositionY", ref posY);
+				// Keys
+				Configuration.Get("KeyUp", ref i_up);
+				up = (Microsoft.Xna.Framework.Input.Keys)i_up;
+				Configuration.Get("KeyDown", ref i_down);
+				down = (Microsoft.Xna.Framework.Input.Keys)i_down;
+				Configuration.Get("KeyLeft", ref i_left);
+				left = (Microsoft.Xna.Framework.Input.Keys)i_left;
+				Configuration.Get("KeyRight", ref i_right);
+				right = (Microsoft.Xna.Framework.Input.Keys)i_right;
+				Configuration.Get("KeyJump", ref i_jump);
+				jump = (Microsoft.Xna.Framework.Input.Keys)i_jump;
 				return true;
 			}
 			return false;
@@ -84,6 +104,12 @@ namespace Keystrokes.Content
 			// Position
 			Configuration.Put("PositionX", posX);
 			Configuration.Put("PositionY", posY);
+			// Keys
+			Configuration.Put("KeyUp", i_up);
+			Configuration.Put("KeyDown", i_down);
+			Configuration.Put("KeyLeft", i_left);
+			Configuration.Put("KeyRight", i_right);
+			Configuration.Put("KeyJump", i_jump);
 			Configuration.Save();
 		}
 	}

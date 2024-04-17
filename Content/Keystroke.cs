@@ -48,10 +48,7 @@ namespace Keystrokes.Content
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift))
-            {
-                sq.Update(gameTime);
-            }
+            sq.Update(gameTime);
             if (Main.keyState.IsKeyDown(this.key))
             {
                 sq.BackgroundColor = pressedBackground;

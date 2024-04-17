@@ -2,7 +2,6 @@ using Keystrokes.Content;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.GameInput;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -46,11 +45,11 @@ namespace Keystrokes
 			if (!Main.dedServ)
             {
 
-                Upkeystroke = new Keystroke(Microsoft.Xna.Framework.Input.Keys.W, new Vector2(Config.posX + 32, 0), new Vector2(Config.posY + 128, 0), new Vector2(32, 0), new Vector2(32, 0));
-                Downkeystroke = new Keystroke(Microsoft.Xna.Framework.Input.Keys.S, new Vector2(Config.posX + 32, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
-                Leftkeystroke = new Keystroke(Microsoft.Xna.Framework.Input.Keys.A, new Vector2(Config.posX, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
-                Rightkeystroke = new Keystroke(Microsoft.Xna.Framework.Input.Keys.D, new Vector2(Config.posX + 64, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
-                Spacekeystroke = new Keystroke(Microsoft.Xna.Framework.Input.Keys.Space, new Vector2(Config.posX, 0), new Vector2(Config.posY + 192, 0), new Vector2(96, 0), new Vector2(32, 0));
+                Upkeystroke = new Keystroke(Config.up, new Vector2(Config.posX + 32, 0), new Vector2(Config.posY + 128, 0), new Vector2(32, 0), new Vector2(32, 0));
+                Downkeystroke = new Keystroke(Config.down, new Vector2(Config.posX + 32, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
+                Leftkeystroke = new Keystroke(Config.left, new Vector2(Config.posX, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
+                Rightkeystroke = new Keystroke(Config.right, new Vector2(Config.posX + 64, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
+                Spacekeystroke = new Keystroke(Config.jump, new Vector2(Config.posX, 0), new Vector2(Config.posY + 192, 0), new Vector2(96, 0), new Vector2(32, 0));
                 KeystrokeInit();
             }
         }
