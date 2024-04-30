@@ -1,5 +1,6 @@
 using Keystrokes.Content;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
@@ -14,6 +15,7 @@ namespace Keystrokes
             Upkeystroke.Initialize();
             TopInterface = new UserInterface();
             TopInterface.SetState(Upkeystroke);
+
 
             Downkeystroke.Initialize();
             BottomInterface = new UserInterface();
@@ -32,24 +34,24 @@ namespace Keystrokes
             JumpInterface.SetState(Spacekeystroke);
         }
 
-        internal Keystroke Upkeystroke;
+		internal Keystroke Upkeystroke;
         internal Keystroke Downkeystroke;
         internal Keystroke Leftkeystroke;
         internal Keystroke Rightkeystroke;
         internal Keystroke Spacekeystroke;
         public UserInterface TopInterface, BottomInterface, LeftInterface, RightInterface, JumpInterface;
 
-        public override void Load()
+		public override void Load()
         {
 			Config.Load();
 			if (!Main.dedServ)
             {
 
-                Upkeystroke = new Keystroke(Config.up, new Vector2(Config.posX + 32, 0), new Vector2(Config.posY + 128, 0), new Vector2(32, 0), new Vector2(32, 0));
-                Downkeystroke = new Keystroke(Config.down, new Vector2(Config.posX + 32, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
-                Leftkeystroke = new Keystroke(Config.left, new Vector2(Config.posX, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
-                Rightkeystroke = new Keystroke(Config.right, new Vector2(Config.posX + 64, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0));
-                Spacekeystroke = new Keystroke(Config.jump, new Vector2(Config.posX, 0), new Vector2(Config.posY + 192, 0), new Vector2(96, 0), new Vector2(32, 0));
+                Upkeystroke = new Keystroke(Config.up, new Vector2(Config.posX + 32, 0), new Vector2(Config.posY + 128, 0), new Vector2(32, 0), new Vector2(32, 0), 32, 32, false);
+                Downkeystroke = new Keystroke(Config.down, new Vector2(Config.posX + 32, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0), 32, 32, false);
+                Leftkeystroke = new Keystroke(Config.left, new Vector2(Config.posX, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0), 32, 32, false);
+                Rightkeystroke = new Keystroke(Config.right, new Vector2(Config.posX + 64, 0), new Vector2(Config.posY + 160, 0), new Vector2(32, 0), new Vector2(32, 0), 32, 32, false);
+                Spacekeystroke = new Keystroke(Config.jump, new Vector2(Config.posX, 0), new Vector2(Config.posY + 192, 0), new Vector2(96, 0), new Vector2(32, 0), 32, 32, true);
                 KeystrokeInit();
             }
         }
@@ -73,12 +75,12 @@ namespace Keystrokes
                 && Keystroke.visible)
             {
                 TopInterface.Draw(Main.spriteBatch, new GameTime());
-                BottomInterface.Draw(Main.spriteBatch, new GameTime());
-                LeftInterface.Draw(Main.spriteBatch, new GameTime());
-                RightInterface.Draw(Main.spriteBatch, new GameTime());
-                JumpInterface.Draw(Main.spriteBatch, new GameTime());
+				BottomInterface.Draw(Main.spriteBatch, new GameTime());
+				LeftInterface.Draw(Main.spriteBatch, new GameTime());
+				RightInterface.Draw(Main.spriteBatch, new GameTime());
+				JumpInterface.Draw(Main.spriteBatch, new GameTime());
 
-            }
+			}
             return true;
         }
     }
